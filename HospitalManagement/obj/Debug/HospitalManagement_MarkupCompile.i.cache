@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\C#\HospitalManagement\HospitalManagement\App.xaml
-4136625376
+8-892846571
 
-311112336666
+351142449989
 22-1285438190
-MainWindow.xaml;Views\AdminWindow.xaml;Views\DoctorWindow.xaml;Views\LoginWindow.xaml;
+MainWindow.xaml;Pages\AppointmentPage.xaml;Pages\DoctorPage.xaml;Pages\MedicalRecordPage.xaml;Pages\PatientPage.xaml;Views\AdminWindow.xaml;Views\DoctorWindow.xaml;Views\LoginWindow.xaml;
 
-False
+True
 

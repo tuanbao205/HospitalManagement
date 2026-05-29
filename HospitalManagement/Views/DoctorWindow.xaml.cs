@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HospitalManagement.Helpers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace HospitalManagement.Views
 {
-    /// <summary>
-    /// Interaction logic for DoctorWindow.xaml
-    /// </summary>
     public partial class DoctorWindow : Window
     {
         public DoctorWindow()
         {
             InitializeComponent();
+            lblUsername.Text = SessionHelper.CurrentUser?.Username;
+            MainFrame.Navigate(new Pages.AppointmentPage());
+        }
+
+        private void BtnMyAppointments_Click(object sender, RoutedEventArgs e)
+            => MainFrame.Navigate(new Pages.AppointmentPage());
+
+        private void BtnMedicalRecords_Click(object sender, RoutedEventArgs e)
+            => MainFrame.Navigate(new Pages.MedicalRecordPage());
+
+        private void BtnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            SessionHelper.Logout();
+            new LoginWindow().Show();
+            Close();
         }
     }
 }

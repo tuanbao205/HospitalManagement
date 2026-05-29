@@ -1,0 +1,10 @@
+﻿<Page x:Class="HospitalManagement.Pages.PatientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Quản lý bệnh nhân">
+    <Grid>
+        <TextBlock Text="Quản lý bệnh nhân - Đang xây dựng..."
+                   FontSize="20" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" Foreground="#9E9E9E"/>
+    </Grid>
+</Page>

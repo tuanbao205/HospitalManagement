@@ -36,3 +36,11 @@ D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\LoginWindow.g.cs
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\App.baml
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\LoginWindow.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\PatientPage.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\AppointmentPage.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DoctorPage.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\MedicalRecordPage.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\PatientPage.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\AppointmentPage.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DoctorPage.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\MedicalRecordPage.baml
