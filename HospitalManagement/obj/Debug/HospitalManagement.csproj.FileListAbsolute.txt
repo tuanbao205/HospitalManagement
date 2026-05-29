@@ -28,3 +28,11 @@ D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Hospital.2B9058E3.Up2Date
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.exe
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.pdb
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\HospitalManagement.Migrations.InitialCreate.resources
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\AdminWindow.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\DoctorWindow.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\AdminWindow.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\DoctorWindow.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\LoginWindow.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\App.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\LoginWindow.baml

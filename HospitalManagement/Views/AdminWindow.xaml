@@ -1,0 +1,12 @@
+﻿<Window x:Class="HospitalManagement.Views.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Admin - Quản lý bệnh viện" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock Text="Chào mừng Admin!" 
+                   FontSize="24" FontWeight="Bold"
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+    </Grid>
+</Window>
