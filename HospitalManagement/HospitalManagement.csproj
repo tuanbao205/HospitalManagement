@@ -103,6 +103,7 @@
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\Interfaces\IAppointmentService.cs" />
+    <Compile Include="ViewModels\AppointmentViewModel.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\DoctorViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />

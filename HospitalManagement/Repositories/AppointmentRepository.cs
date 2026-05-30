@@ -46,8 +46,18 @@ namespace HospitalManagement.Repositories
         {
             var existing = _db.Appointments.Find(appointment.AppointmentId);
             if (existing == null) return;
-            existing.Status = appointment.Status;
+            existing.PatientId = appointment.PatientId;
+            existing.DoctorId = appointment.DoctorId;
             existing.Date = appointment.Date;
+            existing.Status = appointment.Status;
+            _db.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var appointment = _db.Appointments.Find(id);
+            if (appointment == null) return;
+            _db.Appointments.Remove(appointment);
             _db.SaveChanges();
         }
 

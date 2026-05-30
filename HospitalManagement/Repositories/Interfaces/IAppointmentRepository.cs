@@ -11,6 +11,7 @@ namespace HospitalManagement.Repositories.Interfaces
         Appointment GetById(int id);
         void Add(Appointment appointment);
         void Update(Appointment appointment);
+        void Delete(int id);
         bool IsTimeSlotTaken(int doctorId, DateTime date, int? excludeId = null);
     }
 }
