@@ -104,6 +104,7 @@
     <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\Interfaces\IAppointmentService.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
+    <Compile Include="ViewModels\DoctorViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\PatientViewModel.cs" />
     <Compile Include="Views\AdminWindow.xaml.cs">

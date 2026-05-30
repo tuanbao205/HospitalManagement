@@ -10,5 +10,6 @@ namespace HospitalManagement.Repositories.Interfaces
         void Add(Doctor doctor);
         void Update(Doctor doctor);
         void Delete(int id);
+        IEnumerable<Doctor> Search(string keyword);
     }
 }

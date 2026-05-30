@@ -43,5 +43,15 @@ namespace HospitalManagement.Repositories
             _db.Doctors.Remove(doctor);
             _db.SaveChanges();
         }
+
+        public IEnumerable<Doctor> Search(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword)) return GetAll();
+            keyword = keyword.ToLower();
+            return _db.Doctors
+                .Where(d => d.FullName.ToLower().Contains(keyword)
+                         || d.Specialty.ToLower().Contains(keyword))
+                .ToList();
+        }
     }
 }
