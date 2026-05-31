@@ -6,6 +6,7 @@ using HospitalManagement.ViewModels.Base;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -75,7 +76,6 @@ namespace HospitalManagement.ViewModels
             set => SetProperty(ref _searchKeyword, value);
         }
 
-        // Danh sách giới tính cho ComboBox
         public List<string> GenderOptions { get; } = new List<string> { "Nam", "Nữ", "Khác" };
 
         public ICommand AddCommand { get; }
@@ -114,8 +114,40 @@ namespace HospitalManagement.ViewModels
             => !string.IsNullOrWhiteSpace(FullName) &&
                !string.IsNullOrWhiteSpace(Phone);
 
+        private bool Validate(out string error)
+        {
+            if (string.IsNullOrWhiteSpace(FullName))
+            {
+                error = "Vui lòng nhập họ và tên!";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(Phone))
+            {
+                error = "Vui lòng nhập số điện thoại!";
+                return false;
+            }
+            if (Phone.Length < 10 || !Phone.All(char.IsDigit))
+            {
+                error = "Số điện thoại không hợp lệ (10 chữ số)!";
+                return false;
+            }
+            if (DOB > DateTime.Today)
+            {
+                error = "Ngày sinh không hợp lệ!";
+                return false;
+            }
+            error = null;
+            return true;
+        }
+
         private void Add()
         {
+            if (!Validate(out string error))
+            {
+                MessageBox.Show(error, "Lỗi nhập liệu",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             var patient = new Patient
             {
                 FullName = FullName,
@@ -133,6 +165,12 @@ namespace HospitalManagement.ViewModels
 
         private void Update()
         {
+            if (!Validate(out string error))
+            {
+                MessageBox.Show(error, "Lỗi nhập liệu",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             SelectedPatient.FullName = FullName;
             SelectedPatient.DOB = DOB;
             SelectedPatient.Gender = Gender;

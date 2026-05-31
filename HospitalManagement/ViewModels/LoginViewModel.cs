@@ -50,14 +50,13 @@ namespace HospitalManagement.ViewModels
             return !string.IsNullOrWhiteSpace(Username) &&
                    !string.IsNullOrWhiteSpace(Password);
         }
-
         private void ExecuteLogin(object parameter)
         {
             using (var db = new HospitalDbContext())
             {
                 var user = db.Users.FirstOrDefault(u => u.Username == Username);
 
-                if (user == null || !BCrypt.Net.BCrypt.Verify(Password, user.Password))
+                if (user == null || user.Password != Password)
                 {
                     ErrorMessage = "Sai tên đăng nhập hoặc mật khẩu!";
                     HasError = true;

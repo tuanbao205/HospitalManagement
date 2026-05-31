@@ -33,6 +33,8 @@
                         Click="BtnAppointments_Click"/>
                 <Button Content="📁  Hồ sơ bệnh án" Style="{StaticResource MenuButton}"
                         Click="BtnMedicalRecords_Click"/>
+                <Button Content="👤  Tài khoản" Style="{StaticResource MenuButton}"
+                        Click="BtnUsers_Click"/>
 
                 <!-- Logout -->
                 <Button Content="🚪  Đăng xuất" Style="{StaticResource MenuButton}"

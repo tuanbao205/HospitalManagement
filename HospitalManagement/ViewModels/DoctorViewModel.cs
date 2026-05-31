@@ -5,6 +5,7 @@ using HospitalManagement.Repositories;
 using HospitalManagement.ViewModels.Base;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -102,8 +103,41 @@ namespace HospitalManagement.ViewModels
             => !string.IsNullOrWhiteSpace(FullName) &&
                !string.IsNullOrWhiteSpace(Specialty);
 
+        private bool Validate(out string error)
+        {
+            if (string.IsNullOrWhiteSpace(FullName))
+            {
+                error = "Vui lòng nhập họ và tên bác sĩ!";
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(Specialty))
+            {
+                error = "Vui lòng nhập chuyên khoa!";
+                return false;
+            }
+            if (!string.IsNullOrWhiteSpace(Phone) &&
+                (Phone.Length < 10 || !Phone.All(char.IsDigit)))
+            {
+                error = "Số điện thoại không hợp lệ (10 chữ số)!";
+                return false;
+            }
+            if (!string.IsNullOrWhiteSpace(Email) && !Email.Contains("@"))
+            {
+                error = "Email không hợp lệ!";
+                return false;
+            }
+            error = null;
+            return true;
+        }
+
         private void Add()
         {
+            if (!Validate(out string error))
+            {
+                MessageBox.Show(error, "Lỗi nhập liệu",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             var doctor = new Doctor
             {
                 FullName = FullName,
@@ -120,6 +154,12 @@ namespace HospitalManagement.ViewModels
 
         private void Update()
         {
+            if (!Validate(out string error))
+            {
+                MessageBox.Show(error, "Lỗi nhập liệu",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             SelectedDoctor.FullName = FullName;
             SelectedDoctor.Specialty = Specialty;
             SelectedDoctor.Phone = Phone;

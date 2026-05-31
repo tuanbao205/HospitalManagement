@@ -24,6 +24,8 @@ namespace HospitalManagement.Views
 
         private void BtnMedicalRecords_Click(object sender, RoutedEventArgs e)
             => MainFrame.Navigate(new Pages.MedicalRecordPage());
+        private void BtnUsers_Click(object sender, RoutedEventArgs e)
+            => MainFrame.Navigate(new Pages.UserPage());
 
         private void BtnLogout_Click(object sender, RoutedEventArgs e)
         {

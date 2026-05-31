@@ -1,0 +1,107 @@
+﻿<Page x:Class="HospitalManagement.Pages.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:vm="clr-namespace:HospitalManagement.ViewModels"
+      Title="Quản lý tài khoản">
+
+    <Page.DataContext>
+        <vm:UserViewModel/>
+    </Page.DataContext>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="320"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                   Text="Quản lý tài khoản" FontSize="22" FontWeight="Bold"
+                   Foreground="#1976D2" Margin="0,0,0,16"/>
+
+        <!-- Danh sách -->
+        <DataGrid Grid.Row="1" Grid.Column="0" Margin="0,0,16,0"
+                  ItemsSource="{Binding Users}"
+                  SelectedItem="{Binding SelectedUser}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  GridLinesVisibility="Horizontal"
+                  HeadersVisibility="Column"
+                  Background="White"
+                  BorderBrush="#E0E0E0"
+                  RowBackground="White"
+                  AlternatingRowBackground="#FAFAFA"
+                  FontSize="13">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID"
+                                    Binding="{Binding UserId}" Width="45"/>
+                <DataGridTextColumn Header="Tên đăng nhập"
+                                    Binding="{Binding Username}" Width="*"/>
+                <DataGridTextColumn Header="Mật khẩu"
+                                    Binding="{Binding Password}" Width="*"/>
+                <DataGridTextColumn Header="Role"
+                                    Binding="{Binding Role}" Width="80"/>
+                <DataGridTextColumn Header="Bác sĩ"
+                                    Binding="{Binding Doctor.FullName}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Form -->
+        <Border Grid.Row="1" Grid.Column="1"
+                Background="White" CornerRadius="8"
+                BorderBrush="#E0E0E0" BorderThickness="1"
+                Padding="20">
+            <StackPanel>
+                <TextBlock Text="Thông tin tài khoản" FontSize="15"
+                           FontWeight="Bold" Margin="0,0,0,16"/>
+
+                <TextBlock Text="Tên đăng nhập *" FontSize="12" Margin="0,0,0,4"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"
+                         Height="34" Padding="10,6" FontSize="13"
+                         BorderBrush="#BDBDBD" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Mật khẩu *" FontSize="12" Margin="0,0,0,4"/>
+                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+                         Height="34" Padding="10,6" FontSize="13"
+                         BorderBrush="#BDBDBD" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Role *" FontSize="12" Margin="0,0,0,4"/>
+                <ComboBox ItemsSource="{Binding RoleOptions}"
+                          SelectedItem="{Binding SelectedRole}"
+                          Height="34" FontSize="13" Margin="0,0,0,10"/>
+
+                <!-- Chọn bác sĩ - chỉ hiện khi role = Doctor -->
+                <StackPanel Visibility="{Binding IsDoctorRole,
+                    Converter={StaticResource BoolToVisConverter}}">
+                    <TextBlock Text="Bác sĩ *" FontSize="12" Margin="0,0,0,4"/>
+                    <ComboBox ItemsSource="{Binding Doctors}"
+                              SelectedItem="{Binding SelectedDoctor}"
+                              DisplayMemberPath="FullName"
+                              Height="34" FontSize="13" Margin="0,0,0,10"/>
+                </StackPanel>
+
+                <!-- Buttons -->
+                <Button Content="➕ Thêm mới" Height="38" FontSize="13"
+                        Background="#43A047" Foreground="White"
+                        BorderThickness="0" Margin="0,10,0,8"
+                        Command="{Binding AddCommand}"/>
+                <Button Content="✏️ Cập nhật" Height="38" FontSize="13"
+                        Background="#1976D2" Foreground="White"
+                        BorderThickness="0" Margin="0,0,0,8"
+                        Command="{Binding UpdateCommand}"/>
+                <Button Content="🗑️ Xóa" Height="38" FontSize="13"
+                        Background="#E53935" Foreground="White"
+                        BorderThickness="0" Margin="0,0,0,8"
+                        Command="{Binding DeleteCommand}"/>
+                <Button Content="🔄 Làm mới" Height="38" FontSize="13"
+                        Background="#757575" Foreground="White"
+                        BorderThickness="0"
+                        Command="{Binding ClearCommand}"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

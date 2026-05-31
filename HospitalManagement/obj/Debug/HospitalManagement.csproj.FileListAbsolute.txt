@@ -37,3 +37,5 @@ D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\PatientPage.g.cs
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\AppointmentPage.baml
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DoctorPage.baml
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\MedicalRecordPage.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\UserPage.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\UserPage.baml
