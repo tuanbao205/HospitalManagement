@@ -99,7 +99,9 @@
     <Compile Include="Repositories\DoctorRepository.cs" />
     <Compile Include="Repositories\Interfaces\IAppointmentRepository.cs" />
     <Compile Include="Repositories\Interfaces\IDoctorRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IMedicalRecordRepository.cs" />
     <Compile Include="Repositories\Interfaces\IPatientRepository.cs" />
+    <Compile Include="Repositories\MedicalRecordRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Services\AppointmentService.cs" />
     <Compile Include="Services\Interfaces\IAppointmentService.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="ViewModels\DoctorViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\MedicalRecordViewModel.cs" />
     <Compile Include="ViewModels\PatientViewModel.cs" />
     <Compile Include="Views\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
