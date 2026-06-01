@@ -12,6 +12,7 @@
                                              SecondaryColor="Teal"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
             <conv:BoolToVisibilityConverter x:Key="BoolToVisConverter"/>
             <Style x:Key="MenuButton" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"/>

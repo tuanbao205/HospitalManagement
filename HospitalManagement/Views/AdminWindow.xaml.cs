@@ -9,10 +9,10 @@ namespace HospitalManagement.Views
         {
             InitializeComponent();
             lblUsername.Text = SessionHelper.CurrentUser?.Username;
-            // Mở trang bệnh nhân mặc định
-            MainFrame.Navigate(new Pages.PatientPage());
+            MainFrame.Navigate(new Pages.DashboardPage());
         }
-
+        private void BtnDashboard_Click(object sender, RoutedEventArgs e)
+            => MainFrame.Navigate(new Pages.DashboardPage());
         private void BtnPatients_Click(object sender, RoutedEventArgs e)
             => MainFrame.Navigate(new Pages.PatientPage());
 

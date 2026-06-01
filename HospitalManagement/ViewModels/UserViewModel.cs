@@ -99,15 +99,15 @@ namespace HospitalManagement.ViewModels
         private void LoadData()
         {
             Users = new ObservableCollection<User>(_userRepo.GetAll());
+            LoadAvailableDoctors(null);
+        }
 
-            // Lấy danh sách DoctorId đã có tài khoản
+        private void LoadAvailableDoctors(int? currentDoctorId)
+        {
             var usedDoctorIds = _userRepo.GetAll()
                 .Where(u => u.DoctorId.HasValue)
                 .Select(u => u.DoctorId.Value)
                 .ToList();
-
-            // Nếu đang sửa thì giữ lại bác sĩ của user đang chọn
-            var currentDoctorId = SelectedUser?.DoctorId;
 
             var availableDoctors = _doctorRepo.GetAll()
                 .Where(d => !usedDoctorIds.Contains(d.DoctorId)
@@ -122,7 +122,7 @@ namespace HospitalManagement.ViewModels
             Username = u.Username;
             Password = u.Password;
             SelectedRole = u.Role;
-            LoadData(); // Reload để cập nhật danh sách bác sĩ available
+            LoadAvailableDoctors(u.DoctorId);
             SelectedDoctor = u.DoctorId.HasValue
                 ? _doctorRepo.GetById(u.DoctorId.Value)
                 : null;
@@ -225,6 +225,7 @@ namespace HospitalManagement.ViewModels
             SelectedRole = "Admin";
             SelectedDoctor = null;
             SelectedUser = null;
+            LoadAvailableDoctors(null);
         }
     }
 }

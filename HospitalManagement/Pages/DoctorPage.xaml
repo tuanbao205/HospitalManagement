@@ -18,19 +18,16 @@
             <ColumnDefinition Width="320"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Tiêu đề -->
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                    Text="Quản lý bác sĩ" FontSize="22" FontWeight="Bold"
                    Foreground="#1976D2" Margin="0,0,0,16"/>
 
-        <!-- Danh sách bên trái -->
         <Grid Grid.Row="1" Grid.Column="0" Margin="0,0,16,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Thanh tìm kiếm -->
             <Grid Grid.Row="0" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -49,13 +46,13 @@
                         BorderThickness="0" Command="{Binding ClearCommand}"/>
             </Grid>
 
-            <!-- DataGrid -->
             <DataGrid Grid.Row="1"
                       ItemsSource="{Binding Doctors}"
                       SelectedItem="{Binding SelectedDoctor}"
                       AutoGenerateColumns="False"
                       IsReadOnly="True"
                       SelectionMode="Single"
+                      SelectionUnit="FullRow"
                       GridLinesVisibility="Horizontal"
                       HeadersVisibility="Column"
                       Background="White"
@@ -63,6 +60,12 @@
                       RowBackground="White"
                       AlternatingRowBackground="#FAFAFA"
                       FontSize="13">
+                <DataGrid.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#1976D2"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="White"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#1976D2"/>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID"
                                         Binding="{Binding DoctorId}" Width="50"/>
@@ -78,7 +81,6 @@
             </DataGrid>
         </Grid>
 
-        <!-- Form bên phải -->
         <Border Grid.Row="1" Grid.Column="1"
                 Background="White" CornerRadius="8"
                 BorderBrush="#E0E0E0" BorderThickness="1"
@@ -107,7 +109,6 @@
                          Height="34" Padding="10,6" FontSize="13"
                          BorderBrush="#BDBDBD" Margin="0,0,0,20"/>
 
-                <!-- Buttons -->
                 <Button Content="➕ Thêm mới" Height="38" FontSize="13"
                         Background="#43A047" Foreground="White" BorderThickness="0"
                         Command="{Binding AddCommand}" Margin="0,0,0,8"/>

@@ -47,3 +47,5 @@ D:\C#\HospitalManagement\HospitalManagement\bin\Debug\MaterialDesignColors.pdb
 D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.dll
 D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.pdb
 D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DashboardPage.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DashboardPage.baml
