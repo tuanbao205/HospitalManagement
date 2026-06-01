@@ -39,3 +39,11 @@ D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DoctorPage.baml
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\MedicalRecordPage.baml
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\UserPage.g.cs
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\UserPage.baml
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\MaterialDesignColors.dll
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\MaterialDesignColors.pdb
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.xml
