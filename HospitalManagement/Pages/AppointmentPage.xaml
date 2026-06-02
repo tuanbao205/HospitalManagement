@@ -18,25 +18,71 @@
             <ColumnDefinition Width="340"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Tiêu đề -->
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
                    Text="Quản lý lịch khám" FontSize="22" FontWeight="Bold"
                    Foreground="#1976D2" Margin="0,0,0,16"/>
 
-        <!-- Danh sách lịch khám -->
-        <DataGrid Grid.Row="1" Grid.Column="0" Margin="0,0,16,0"
+        <DataGrid Grid.Row="1" Grid.Column="0" Margin="0,0,16,0" RowHeight="30"
                   ItemsSource="{Binding Appointments}"
                   SelectedItem="{Binding SelectedAppointment}"
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   SelectionMode="Single"
+                  SelectionUnit="FullRow"
                   GridLinesVisibility="Horizontal"
                   HeadersVisibility="Column"
                   Background="White"
                   BorderBrush="#E0E0E0"
-                  RowBackground="White"
-                  AlternatingRowBackground="#FAFAFA"
                   FontSize="13">
+
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#1976D2"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="White"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="#1976D2"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+            </DataGrid.Resources>
+
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="Scheduled">
+                            <Setter Property="Background" Value="#E3F2FD"/>
+                            <Setter Property="Foreground" Value="#1565C0"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="Done">
+                            <Setter Property="Background" Value="#E8F5E9"/>
+                            <Setter Property="Foreground" Value="#2E7D32"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="Cancelled">
+                            <Setter Property="Background" Value="#FFEBEE"/>
+                            <Setter Property="Foreground" Value="#C62828"/>
+                        </DataTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.85"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#1976D2"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="Padding" Value="10,0"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID"
                                     Binding="{Binding AppointmentId}" Width="45"/>
@@ -52,14 +98,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <!-- Form bên phải -->
         <Border Grid.Row="1" Grid.Column="1"
                 Background="White" CornerRadius="8"
                 BorderBrush="#E0E0E0" BorderThickness="1"
                 Padding="20">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <!-- Đặt lịch / Sửa lịch - chỉ Admin thấy -->
                     <StackPanel Visibility="{Binding IsAdmin,
                         Converter={StaticResource BoolToVisConverter}}">
                         <TextBlock Text="Đặt lịch mới" FontSize="15"
@@ -112,7 +156,6 @@
                         <Separator Margin="0,0,0,16"/>
                     </StackPanel>
 
-                    <!-- Cập nhật trạng thái -->
                     <TextBlock Text="Cập nhật trạng thái" FontSize="15"
                                FontWeight="Bold" Margin="0,0,0,16"/>
 
