@@ -145,6 +145,10 @@
                             Background="#757575" Foreground="White"
                             BorderThickness="0"
                             Command="{Binding ClearCommand}"/>
+                    <Button Content="🖨️ In hồ sơ" Height="38" FontSize="13"
+                            Background="#0277BD" Foreground="White"
+                            BorderThickness="0" Margin="0,0,0,8"
+                            Command="{Binding PrintCommand}"/>
                 </StackPanel>
             </ScrollViewer>
         </Border>

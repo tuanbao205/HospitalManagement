@@ -40,7 +40,7 @@
 
                 <!-- Logout -->
                 <Button Content="🚪  Đăng xuất" Style="{StaticResource MenuButton}"
-                        Click="BtnLogout_Click" Margin="0,300,0,0"
+                        Click="BtnLogout_Click" Margin="0,180,0,0"
                         Background="#C62828"/>
             </StackPanel>
         </Border>

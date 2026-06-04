@@ -122,6 +122,7 @@ namespace HospitalManagement.ViewModels
         public ICommand SaveCommand { get; }
         public ICommand DeleteCommand { get; }
         public ICommand ClearCommand { get; }
+        public ICommand PrintCommand { get; }
 
         public MedicalRecordViewModel()
         {
@@ -134,6 +135,7 @@ namespace HospitalManagement.ViewModels
             SaveCommand = new RelayCommand(_ => Save(), _ => CanSave());
             DeleteCommand = new RelayCommand(_ => Delete(), _ => SelectedRecord != null && IsDoctor);
             ClearCommand = new RelayCommand(_ => ClearForm());
+            PrintCommand = new RelayCommand(_ => Print(), _ => SelectedRecord != null);
         }
 
         private void LoadData()
@@ -246,6 +248,11 @@ namespace HospitalManagement.ViewModels
             AppointmentDate = string.Empty;
             SelectedRecord = null;
             SelectedAppointment = null;
+        }
+        private void Print()
+        {
+            if (SelectedRecord == null) return;
+            PrintHelper.PrintMedicalRecord(SelectedRecord);
         }
     }
 }
