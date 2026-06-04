@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\C#\HospitalManagement\HospitalManagement\App.xaml
-11177894041
+12-1900848387
 
-48288265723
+49986430247
 25-660019234
-MainWindow.xaml;Pages\AppointmentPage.xaml;Pages\DashboardPage.xaml;Pages\DoctorPage.xaml;Pages\MedicalRecordPage.xaml;Pages\PatientPage.xaml;Pages\UserPage.xaml;Views\AdminWindow.xaml;Views\ChangePasswordWindow.xaml;Views\DoctorWindow.xaml;Views\LoginWindow.xaml;
+MainWindow.xaml;Pages\AppointmentPage.xaml;Pages\ChangePasswordPage.xaml;Pages\DashboardPage.xaml;Pages\DoctorPage.xaml;Pages\MedicalRecordPage.xaml;Pages\PatientPage.xaml;Pages\UserPage.xaml;Views\AdminWindow.xaml;Views\ChangePasswordWindow.xaml;Views\DoctorWindow.xaml;Views\LoginWindow.xaml;
 
 False
 

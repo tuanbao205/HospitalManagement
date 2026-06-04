@@ -95,6 +95,9 @@
     <Compile Include="Pages\AppointmentPage.xaml.cs">
       <DependentUpon>AppointmentPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ChangePasswordPage.xaml.cs">
+      <DependentUpon>ChangePasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DashboardPage.xaml.cs">
       <DependentUpon>DashboardPage.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ChangePasswordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,8 +196,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DoctorWindow.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\LoginWindow.xaml">
       <SubType>Designer</SubType>

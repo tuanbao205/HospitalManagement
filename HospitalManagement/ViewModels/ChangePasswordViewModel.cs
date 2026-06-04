@@ -45,12 +45,12 @@ namespace HospitalManagement.ViewModels
         }
 
         public ICommand ChangePasswordCommand { get; }
-        public ICommand CancelCommand { get; }
+        public ICommand ClearCommand { get; }
 
         public ChangePasswordViewModel()
         {
             ChangePasswordCommand = new RelayCommand(_ => ChangePassword(), _ => CanChange());
-            CancelCommand = new RelayCommand(_ => Cancel());
+            ClearCommand = new RelayCommand(_ => ClearForm());
         }
 
         private bool CanChange()
@@ -60,7 +60,6 @@ namespace HospitalManagement.ViewModels
 
         private void ChangePassword()
         {
-            // Kiểm tra mật khẩu cũ
             if (OldPassword != SessionHelper.CurrentUser.Password)
             {
                 ErrorMessage = "Mật khẩu cũ không đúng!";
@@ -68,7 +67,6 @@ namespace HospitalManagement.ViewModels
                 return;
             }
 
-            // Kiểm tra mật khẩu mới
             if (NewPassword.Length < 6)
             {
                 ErrorMessage = "Mật khẩu mới phải có ít nhất 6 ký tự!";
@@ -76,7 +74,6 @@ namespace HospitalManagement.ViewModels
                 return;
             }
 
-            // Kiểm tra xác nhận mật khẩu
             if (NewPassword != ConfirmPassword)
             {
                 ErrorMessage = "Mật khẩu xác nhận không khớp!";
@@ -84,7 +81,6 @@ namespace HospitalManagement.ViewModels
                 return;
             }
 
-            // Cập nhật mật khẩu
             using (var db = new HospitalDbContext())
             {
                 var user = db.Users.FirstOrDefault(
@@ -93,29 +89,22 @@ namespace HospitalManagement.ViewModels
 
                 user.Password = NewPassword;
                 db.SaveChanges();
-
-                // Cập nhật session
                 SessionHelper.CurrentUser.Password = NewPassword;
             }
 
             HasError = false;
+            ClearForm();
             MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo",
                 MessageBoxButton.OK, MessageBoxImage.Information);
-
-            // Đóng cửa sổ
-            Cancel();
         }
 
-        private void Cancel()
+        private void ClearForm()
         {
-            foreach (Window w in Application.Current.Windows)
-            {
-                if (w is Views.ChangePasswordWindow)
-                {
-                    w.Close();
-                    break;
-                }
-            }
+            OldPassword = string.Empty;
+            NewPassword = string.Empty;
+            ConfirmPassword = string.Empty;
+            ErrorMessage = string.Empty;
+            HasError = false;
         }
     }
 }

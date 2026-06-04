@@ -25,8 +25,6 @@ namespace HospitalManagement.Views
             Close();
         }
         private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
-        {
-            new ChangePasswordWindow().ShowDialog();
-        }
+            => MainFrame.Navigate(new Pages.ChangePasswordPage());
     }
 }
