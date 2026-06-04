@@ -24,5 +24,9 @@ namespace HospitalManagement.Views
             new LoginWindow().Show();
             Close();
         }
+        private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            new ChangePasswordWindow().ShowDialog();
+        }
     }
 }

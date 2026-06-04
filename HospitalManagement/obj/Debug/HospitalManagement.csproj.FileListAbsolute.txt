@@ -49,3 +49,5 @@ D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.p
 D:\C#\HospitalManagement\HospitalManagement\bin\Debug\Microsoft.Xaml.Behaviors.xml
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DashboardPage.g.cs
 D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Pages\DashboardPage.baml
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\ChangePasswordWindow.g.cs
+D:\C#\HospitalManagement\HospitalManagement\obj\Debug\Views\ChangePasswordWindow.baml
