@@ -23,17 +23,22 @@ namespace HospitalManagement.Helpers
         {
             var doc = new FlowDocument
             {
-                PagePadding = new Thickness(60),
+                PagePadding = new Thickness(80, 60, 80, 60),
                 FontFamily = new FontFamily("Arial"),
-                FontSize = 13
+                FontSize = 13,
+                LineHeight = 22,
+                TextAlignment = TextAlignment.Left,
+                PageWidth = 816,  // A4 width in pixels (96dpi)
+                ColumnWidth = double.MaxValue  // Quan trọng - tắt multi-column
             };
 
             // Tiêu đề bệnh viện
             doc.Blocks.Add(new Paragraph(new Run("BỆNH VIỆN ĐA KHOA"))
             {
-                FontSize = 18,
+                FontSize = 20,
                 FontWeight = FontWeights.Bold,
-                TextAlignment = TextAlignment.Center
+                TextAlignment = TextAlignment.Center,
+                Margin = new Thickness(0, 0, 0, 6)
             });
 
             doc.Blocks.Add(new Paragraph(new Run("HỒ SƠ BỆNH ÁN"))
@@ -77,65 +82,60 @@ namespace HospitalManagement.Helpers
             doc.Blocks.Add(CreateRow("Ghi chú:", record.Note));
 
             // Chữ ký
-            doc.Blocks.Add(new Paragraph()
-            {
-                Margin = new Thickness(0, 40, 0, 0)
-            });
-
-            var signTable = new Table();
+            var signTable = new Table { Margin = new Thickness(0, 60, 0, 0) };
             signTable.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Star) });
             signTable.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Star) });
 
-            var rowGroup = new TableRowGroup();
-            var row = new TableRow();
+            var signRowGroup = new TableRowGroup();
 
-            var cellDate = new TableCell(new Paragraph(
-                new Run($"Ngày {record.CreatedDate:dd} tháng {record.CreatedDate:MM} năm {record.CreatedDate:yyyy}")))
+            // Dòng 1: ngày tháng
+            var row1 = new TableRow();
+            row1.Cells.Add(new TableCell(new Paragraph(new Run(""))));
+            row1.Cells.Add(new TableCell(new Paragraph(
+                new Run($"Ngày {record.CreatedDate:dd} tháng {record.CreatedDate:MM} năm {record.CreatedDate:yyyy}"))
             {
                 TextAlignment = TextAlignment.Center
-            };
+            }));
+            signRowGroup.Rows.Add(row1);
 
-            var cellSign = new TableCell(new Paragraph(
-                new Run("Bác sĩ khám bệnh")))
+            // Dòng 2: chức danh
+            var row2 = new TableRow();
+            row2.Cells.Add(new TableCell(new Paragraph(new Run(""))));
+            row2.Cells.Add(new TableCell(new Paragraph(
+                new Run("BÁC SĨ KHÁM BỆNH"))
             {
                 TextAlignment = TextAlignment.Center,
-                FontWeight = FontWeights.Bold
-            };
-
-            row.Cells.Add(cellDate);
-            row.Cells.Add(cellSign);
-            rowGroup.Rows.Add(row);
-            signTable.RowGroups.Add(rowGroup);
-            doc.Blocks.Add(signTable);
-
-            // Tên bác sĩ ký
-            var signRow = new TableRow();
-            var signName = new TableCell(new Paragraph(
-                new Run(record.Appointment?.Doctor?.FullName ?? "")))
-            {
-                TextAlignment = TextAlignment.Center,
-                FontWeight = FontWeights.Bold
-            };
-            var emptyCell = new TableCell(new Paragraph(new Run("")));
-
-            var signRowGroup2 = new TableRowGroup();
-            var signTable2 = new Table();
-            signTable2.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Star) });
-            signTable2.Columns.Add(new TableColumn { Width = new GridLength(1, GridUnitType.Star) });
-            var signRow2 = new TableRow();
-            signRow2.Cells.Add(emptyCell);
-            signRow2.Cells.Add(signName);
-            signRowGroup2.Rows.Add(signRow2);
-            signTable2.RowGroups.Add(signRowGroup2);
-
-            var nameParag = new Paragraph(
-                new Run($"\n\n{record.Appointment?.Doctor?.FullName}"))
-            {
-                TextAlignment = TextAlignment.Right,
                 FontWeight = FontWeights.Bold,
-                Margin = new Thickness(0, 40, 0, 0)
-            };
-            doc.Blocks.Add(nameParag);
+                Margin = new Thickness(0, 4, 0, 0)
+            }));
+            signRowGroup.Rows.Add(row2);
+
+            // Dòng 3: ký tên
+            var row3 = new TableRow();
+            row3.Cells.Add(new TableCell(new Paragraph(new Run(""))));
+            row3.Cells.Add(new TableCell(new Paragraph(
+                new Run("(Ký và ghi rõ họ tên)"))
+            {
+                TextAlignment = TextAlignment.Center,
+                Foreground = Brushes.Gray,
+                FontStyle = FontStyles.Italic,
+                Margin = new Thickness(0, 4, 0, 40)
+            }));
+            signRowGroup.Rows.Add(row3);
+
+            // Dòng 4: tên bác sĩ
+            var row4 = new TableRow();
+            row4.Cells.Add(new TableCell(new Paragraph(new Run(""))));
+            row4.Cells.Add(new TableCell(new Paragraph(
+                new Run(record.Appointment?.Doctor?.FullName ?? ""))
+            {
+                TextAlignment = TextAlignment.Center,
+                FontWeight = FontWeights.Bold
+            }));
+            signRowGroup.Rows.Add(row4);
+
+            signTable.RowGroups.Add(signRowGroup);
+            doc.Blocks.Add(signTable);
 
             return doc;
         }
