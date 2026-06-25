@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\C#\HospitalManagement\HospitalManagement\obj\Debug\
+C:\c#\HospitalManagement\HospitalManagement\obj\Debug\
 HospitalManagement
 none
 false
 DEBUG;TRACE
-D:\C#\HospitalManagement\HospitalManagement\App.xaml
-12-1900848387
+C:\c#\HospitalManagement\HospitalManagement\App.xaml
+13-438099634
 
-512048353489
-25-660019234
-MainWindow.xaml;Pages\AppointmentPage.xaml;Pages\ChangePasswordPage.xaml;Pages\DashboardPage.xaml;Pages\DoctorPage.xaml;Pages\MedicalRecordPage.xaml;Pages\PatientPage.xaml;Pages\UserPage.xaml;Views\AdminWindow.xaml;Views\ChangePasswordWindow.xaml;Views\DoctorWindow.xaml;Views\LoginWindow.xaml;
+641124986274
+25-189537435
+MainWindow.xaml;Pages\AppointmentPage.xaml;Pages\ChangePasswordPage.xaml;Pages\DashboardPage.xaml;Pages\DepartmentPage.xaml;Pages\DoctorPage.xaml;Pages\MedicalRecordPage.xaml;Pages\PatientPage.xaml;Pages\UserPage.xaml;Views\AdminWindow.xaml;Views\ChangePasswordWindow.xaml;Views\DoctorWindow.xaml;Views\LoginWindow.xaml;
 
 False
 

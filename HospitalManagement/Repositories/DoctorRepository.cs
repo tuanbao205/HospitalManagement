@@ -3,6 +3,7 @@ using HospitalManagement.Models;
 using HospitalManagement.Repositories.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace HospitalManagement.Repositories
 {
@@ -15,9 +16,19 @@ namespace HospitalManagement.Repositories
             _db = db;
         }
 
-        public IEnumerable<Doctor> GetAll() => _db.Doctors.ToList();
+        public IEnumerable<Doctor> GetAll()
+        {
+            return _db.Doctors
+                      .Include(d => d.Department)
+                      .ToList();
+        }
 
-        public Doctor GetById(int id) => _db.Doctors.Find(id);
+        public Doctor GetById(int id)
+        {
+            return _db.Doctors
+                      .Include(d => d.Department)
+                      .FirstOrDefault(d => d.DoctorId == id);
+        }
 
         public void Add(Doctor doctor)
         {

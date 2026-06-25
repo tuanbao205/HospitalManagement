@@ -71,8 +71,8 @@
                                         Binding="{Binding DoctorId}" Width="50"/>
                     <DataGridTextColumn Header="Họ tên"
                                         Binding="{Binding FullName}" Width="*"/>
-                    <DataGridTextColumn Header="Chuyên khoa"
-                                        Binding="{Binding Specialty}" Width="*"/>
+                    <DataGridTextColumn Header="Khoa"
+                                        Binding="{Binding Department.DepartmentName}" Width="*"/>
                     <DataGridTextColumn Header="Điện thoại"
                                         Binding="{Binding Phone}" Width="110"/>
                     <DataGridTextColumn Header="Email"
@@ -94,10 +94,12 @@
                          Height="34" Padding="10,6" FontSize="13"
                          BorderBrush="#BDBDBD" Margin="0,0,0,10"/>
 
-                <TextBlock Text="Chuyên khoa *" FontSize="12" Margin="0,0,0,4"/>
-                <TextBox Text="{Binding Specialty, UpdateSourceTrigger=PropertyChanged}"
-                         Height="34" Padding="10,6" FontSize="13"
-                         BorderBrush="#BDBDBD" Margin="0,0,0,10"/>
+                <TextBlock Text="Khoa *" FontSize="12" Margin="0,0,0,4"/>
+                <ComboBox ItemsSource="{Binding Departments}"
+                          SelectedItem="{Binding SelectedDepartment}"
+                          DisplayMemberPath="DepartmentName"
+                          Height="34"
+                          Margin="0,0,0,10"/>
 
                 <TextBlock Text="Số điện thoại" FontSize="12" Margin="0,0,0,4"/>
                 <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"

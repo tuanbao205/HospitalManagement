@@ -11,6 +11,9 @@ namespace HospitalManagement.Views
             lblUsername.Text = SessionHelper.CurrentUser?.Username;
             MainFrame.Navigate(new Pages.DashboardPage());
         }
+        private void BtnDepartment_Click(object sender, RoutedEventArgs e)
+            => MainFrame.Navigate(new Pages.DepartmentPage());
+
         private void BtnDashboard_Click(object sender, RoutedEventArgs e)
             => MainFrame.Navigate(new Pages.DashboardPage());
         private void BtnPatients_Click(object sender, RoutedEventArgs e)

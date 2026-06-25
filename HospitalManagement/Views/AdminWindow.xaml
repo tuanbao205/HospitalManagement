@@ -27,6 +27,8 @@
                 <!-- Menu buttons -->
                 <Button Content="🏠  Dashboard" Style="{StaticResource MenuButton}"
                         Click="BtnDashboard_Click" />
+                <Button Content="🏢  Phòng ban" Style="{StaticResource MenuButton}"
+                        Click="BtnDepartment_Click"/>
                 <Button Content="📋  Bệnh nhân" Style="{StaticResource MenuButton}"
                         Click="BtnPatients_Click" />
                 <Button Content="👨‍⚕️  Bác sĩ" Style="{StaticResource MenuButton}"

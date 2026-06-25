@@ -16,6 +16,8 @@ namespace HospitalManagement.Data
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<MedicalRecord> MedicalRecords { get; set; }
 
+        public DbSet<Department> Departments { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Appointment: 1 bác sĩ không có 2 lịch cùng thời điểm

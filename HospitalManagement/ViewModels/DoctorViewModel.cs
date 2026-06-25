@@ -15,12 +15,17 @@ namespace HospitalManagement.ViewModels
     {
         private readonly DoctorRepository _repo;
 
+        private readonly DepartmentRepository _departmentRepo;
+
         private ObservableCollection<Doctor> _doctors;
+
         public ObservableCollection<Doctor> Doctors
         {
             get => _doctors;
             set => SetProperty(ref _doctors, value);
         }
+
+        public ObservableCollection<Department> Departments { get; set; }
 
         private Doctor _selectedDoctor;
         public Doctor SelectedDoctor
@@ -31,6 +36,14 @@ namespace HospitalManagement.ViewModels
                 SetProperty(ref _selectedDoctor, value);
                 if (value != null) LoadForm(value);
             }
+        }
+
+        private Department _selectedDepartment;
+
+        public Department SelectedDepartment
+        {
+            get => _selectedDepartment;
+            set => SetProperty(ref _selectedDepartment, value);
         }
 
         private string _fullName;
@@ -77,6 +90,9 @@ namespace HospitalManagement.ViewModels
         public DoctorViewModel()
         {
             _repo = new DoctorRepository(new HospitalDbContext());
+            _departmentRepo = new DepartmentRepository(new HospitalDbContext());
+
+            LoadDepartments();
             LoadDoctors();
 
             AddCommand = new RelayCommand(_ => Add(), _ => CanSave());
@@ -91,12 +107,24 @@ namespace HospitalManagement.ViewModels
             Doctors = new ObservableCollection<Doctor>(_repo.GetAll());
         }
 
+        private void LoadDepartments()
+        {
+            Departments = new ObservableCollection<Department>(
+                _departmentRepo.GetAll());
+
+            OnPropertyChanged(nameof(Departments));
+        }
+
         private void LoadForm(Doctor d)
         {
             FullName = d.FullName;
             Specialty = d.Specialty;
             Phone = d.Phone;
             Email = d.Email;
+
+            SelectedDepartment =
+                Departments.FirstOrDefault(
+                    x => x.DepartmentId == d.DepartmentId);
         }
 
         private bool CanSave()
@@ -115,6 +143,13 @@ namespace HospitalManagement.ViewModels
                 error = "Vui lòng nhập chuyên khoa!";
                 return false;
             }
+
+            if (SelectedDepartment == null)
+            {
+                error = "Vui lòng chọn khoa!";
+                return false;
+            }
+
             if (!string.IsNullOrWhiteSpace(Phone) &&
                 (Phone.Length < 10 || !Phone.All(char.IsDigit)))
             {
@@ -138,13 +173,16 @@ namespace HospitalManagement.ViewModels
                     MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+
             var doctor = new Doctor
             {
                 FullName = FullName,
                 Specialty = Specialty,
                 Phone = Phone,
-                Email = Email
+                Email = Email,
+                DepartmentId = SelectedDepartment.DepartmentId
             };
+
             _repo.Add(doctor);
             LoadDoctors();
             ClearForm();
@@ -164,6 +202,7 @@ namespace HospitalManagement.ViewModels
             SelectedDoctor.Specialty = Specialty;
             SelectedDoctor.Phone = Phone;
             SelectedDoctor.Email = Email;
+            SelectedDoctor.DepartmentId = SelectedDepartment.DepartmentId;
             _repo.Update(SelectedDoctor);
             LoadDoctors();
             MessageBox.Show("Cập nhật thành công!", "Thông báo",
@@ -195,8 +234,12 @@ namespace HospitalManagement.ViewModels
             Specialty = string.Empty;
             Phone = string.Empty;
             Email = string.Empty;
+
+            SelectedDepartment = null;
+
             SelectedDoctor = null;
             SearchKeyword = string.Empty;
+
             LoadDoctors();
         }
     }
